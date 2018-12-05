@@ -16,12 +16,6 @@ Pod::Spec.new do |s|
   
   s.subspec 'leveldb-library' do |df|
        df.name         =  'leveldb-library'
-      df.version      =  '1.18.2'
-      df.license      =  'New BSD'
-      df.summary      =  'A fast key-value storage library '
-      df.description  =  'LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.'
-      df.homepage     =  'https://github.com/google/leveldb'
-      df.authors      =  'The LevelDB Authors'
 
       df.ios.deployment_target = '5.0'
       df.osx.deployment_target = '10.7'
