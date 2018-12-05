@@ -4,8 +4,8 @@ Pod::Spec.new do |s|
   s.license      =  'MIT'
   s.summary      =  'A feature-complete wrapper for LevelDB in Objective-C.'
   s.description  =  'This is a feature-complete wrapper for Google\'s LevelDB. LevelDB is a fast key-value store written by Google.'
-  s.homepage     =  'https://github.com/matehat/Objective-LevelDB'
-  s.authors      =  'Michael Hoisie', 'Mathieu D\'Amours'
+  s.homepage     =  'https://github.com/trthtai/Objective-LevelDB'
+  s.authors      =  'Steven Zhang'
 
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
