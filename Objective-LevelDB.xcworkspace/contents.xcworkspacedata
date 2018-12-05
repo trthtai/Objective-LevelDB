@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:db">
+   </FileRef>
+   <FileRef
+      location = "group:doc">
+   </FileRef>
+   <FileRef
+      location = "group:helpers">
+   </FileRef>
+   <FileRef
+      location = "group:include">
+   </FileRef>
+   <FileRef
+      location = "group:issues">
+   </FileRef>
+   <FileRef
+      location = "group:port">
+   </FileRef>
+   <FileRef
+      location = "group:table">
+   </FileRef>
+   <FileRef
+      location = "group:util">
+   </FileRef>
    <Group
       location = "group:Classes"
       name = "Classes">

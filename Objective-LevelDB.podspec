@@ -11,8 +11,30 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.7'
 
   s.source       =  { :git => 'https://github.com/trthtai/Objective-LevelDB.git', :tag => s.version.to_s, :submodules => true }
+  
+  s.preserve_path = "db", "port", "table", "util"
+  s.xcconfig = {
+    'CC'  => 'clang',
+    'CXX' => 'clang++',
+    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/leveldb-library/" "${PODS_ROOT}/leveldb-library/include"',
+    'OTHER_LDFLAGS' => '-lc++'
+  }
+  
+  s.header_dir = "leveldb"
+  s.source_files = [
+	"Classes/*.{h,m,mm}",
+    "db/*.{cc}",
+    "port/*.{cc}",
+    "table/*.{cc}",
+    "util/*.{cc}",
+    "include/leveldb/*.h"
+  ]
 
-  s.source_files = 'Classes/*.{h,m,mm}'
-  s.dependency "leveldb-library", :git => "https://github.com/trthtai/leveldb-library-podspec"
+  s.exclude_files = [
+    "**/*_test.cc",
+    "**/*_bench.cc",
+    "port/win"
+  ]
+
   s.requires_arc = false
 end
