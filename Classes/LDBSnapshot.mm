@@ -6,7 +6,7 @@
 //
 
 #import "LDBSnapshot.h"
-#import <leveldb/db.h>
+#import "db.h"
 
 @interface LevelDB ()
 
