@@ -9,11 +9,11 @@
 #import "LDBSnapshot.h"
 #import "LDBWriteBatch.h"
 
-#import "db.h"
-#import "options.h"
-#import "cache.h"
-#import "filter_policy.h"
-#import "write_batch.h"
+#import <leveldb/db.h>
+#import <leveldb/options.h>
+#import <leveldb/cache.h>
+#import <leveldb/filter_policy.h>
+#import <leveldb/write_batch.h>
 
 #include "Common.h"
 

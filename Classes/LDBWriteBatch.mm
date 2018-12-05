@@ -5,8 +5,8 @@
 //  See LICENCE for details.
 //
 
-#import "db.h"
-#import "write_batch.h"
+#import <leveldb/db.h>
+#import <leveldb/write_batch.h>
 
 #import "LDBWriteBatch.h"
 #include "Common.h"
