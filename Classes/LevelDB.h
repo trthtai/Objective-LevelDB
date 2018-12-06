@@ -112,6 +112,8 @@ NSData   * NSDataFromLevelDBKey  (LevelDBKey * key);
  */
 + (id) databaseInLibraryWithName:(NSString *)name andOptions:(LevelDBOptions)opts;
 
++ (id) databaseInBundleWithName:(NSString *)name;
+
 /**
  Initialize a leveldb instance
  

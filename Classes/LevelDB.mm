@@ -70,6 +70,10 @@ NSString * getLibraryPath() {
     return [paths objectAtIndex:0];
 }
 
+NSString * getBundlePath(NSString * fileName) {
+    return [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
+}
+
 NSString * const kLevelDBChangeType         = @"changeType";
 NSString * const kLevelDBChangeTypePut      = @"put";
 NSString * const kLevelDBChangeTypeDelete   = @"del";
@@ -193,6 +197,12 @@ LevelDBOptions MakeLevelDBOptions() {
 + (id) databaseInLibraryWithName:(NSString *)name
                       andOptions:(LevelDBOptions)opts {
     NSString *path = [getLibraryPath() stringByAppendingPathComponent:name];
+    LevelDB *ldb = [[[self alloc] initWithPath:path name:name andOptions:opts] autorelease];
+    return ldb;
+}
++ (id) databaseInBundleWithName:(NSString *)name {
+    LevelDBOptions opts = MakeLevelDBOptions();
+    NSString *path = getBundlePath(name);
     LevelDB *ldb = [[[self alloc] initWithPath:path name:name andOptions:opts] autorelease];
     return ldb;
 }
