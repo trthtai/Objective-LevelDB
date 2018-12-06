@@ -74,6 +74,11 @@ NSString * getBundlePath(NSString * fileName) {
     return [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
 }
 
+NSString * getDocumentsPath() {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentsDirectory, NSUserDomainMask, YES);
+    return [paths objectAtIndex:0];
+}
+
 NSString * const kLevelDBChangeType         = @"changeType";
 NSString * const kLevelDBChangeTypePut      = @"put";
 NSString * const kLevelDBChangeTypeDelete   = @"del";
@@ -203,6 +208,12 @@ LevelDBOptions MakeLevelDBOptions() {
 + (id) databaseInBundleWithName:(NSString *)name {
     LevelDBOptions opts = MakeLevelDBOptions();
     NSString *path = getBundlePath(name);
+    LevelDB *ldb = [[[self alloc] initWithPath:path name:name andOptions:opts] autorelease];
+    return ldb;
+}
++ (id) databaseInDocumentsWithName:(NSString *)name {
+    LevelDBOptions opts = MakeLevelDBOptions();
+    NSString *path = [getDocumentsPath() stringByAppendingPathComponent:name];
     LevelDB *ldb = [[[self alloc] initWithPath:path name:name andOptions:opts] autorelease];
     return ldb;
 }
