@@ -75,7 +75,7 @@ NSString * getBundlePath(NSString * fileName) {
 }
 
 NSString * getDocumentsPath() {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentsDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
 
