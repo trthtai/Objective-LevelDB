@@ -307,6 +307,22 @@ LevelDBOptions MakeLevelDBOptions() {
     LevelDBKey lkey = GenericKeyFromSlice(k);
     return DecodeFromSlice(v_string, &lkey, _decoder);
 }
+- (id) stringForKey:(id)key {
+    AssertDBExists(db);
+    AssertKeyType(key);
+    std::string v_string;
+    MaybeAddSnapshotToOptions(readOptions, readOptionsPtr, snapshot);
+    leveldb::Slice k = KeyFromStringOrData(key);
+    leveldb::Status status = db->Get(*readOptionsPtr, k, &v_string);
+    
+    if(!status.ok()) {
+        if(!status.IsNotFound())
+            NSLog(@"Problem retrieving value for key '%@' from database: %s", key, status.ToString().c_str());
+        return nil;
+    }
+    
+    return v_string;
+}
 - (id) objectsForKeys:(NSArray *)keys notFoundMarker:(id)marker {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:keys.count];
     [keys enumerateObjectsUsingBlock:^(id objId, NSUInteger idx, BOOL *stop) {

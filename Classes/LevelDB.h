@@ -200,6 +200,8 @@ NSData   * NSDataFromLevelDBKey  (LevelDBKey * key);
  */
 - (id) objectForKey:(id)key;
 
+- (id) stringForKey:(id)key;
+
 /**
  Same as `[self objectForKey:]`
  */
