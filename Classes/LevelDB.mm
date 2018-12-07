@@ -308,10 +308,11 @@ LevelDBOptions MakeLevelDBOptions() {
     return DecodeFromSlice(v_string, &lkey, _decoder);
 }
 - (id) stringForKey:(id)key {
+    LDBSnapshot *snapshot = nil;
     AssertDBExists(db);
     AssertKeyType(key);
     std::string v_string;
-    MaybeAddSnapshotToOptions(readOptions, readOptionsPtr, nil);
+    MaybeAddSnapshotToOptions(readOptions, readOptionsPtr, snapshot);
     leveldb::Slice k = KeyFromStringOrData(key);
     leveldb::Status status = db->Get(*readOptionsPtr, k, &v_string);
     
