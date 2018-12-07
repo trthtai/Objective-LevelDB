@@ -311,7 +311,7 @@ LevelDBOptions MakeLevelDBOptions() {
     AssertDBExists(db);
     AssertKeyType(key);
     std::string v_string;
-    MaybeAddSnapshotToOptions(readOptions, readOptionsPtr, snapshot);
+    MaybeAddSnapshotToOptions(readOptions, readOptionsPtr, nil);
     leveldb::Slice k = KeyFromStringOrData(key);
     leveldb::Status status = db->Get(*readOptionsPtr, k, &v_string);
     
@@ -321,7 +321,10 @@ LevelDBOptions MakeLevelDBOptions() {
         return nil;
     }
     
-    return v_string;
+    NSData *data = DataFromSlice(v_string);
+    NSString *value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    return value;
 }
 - (id) objectsForKeys:(NSArray *)keys notFoundMarker:(id)marker {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:keys.count];
